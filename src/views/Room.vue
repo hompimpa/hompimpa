@@ -114,69 +114,69 @@ export default {
     },
     mounted () {
         
-        // console.log('-----room',count)
-        // console.log(this.playerReady)
-        let self = this
-        roomRef.on('value', function (snap) {
-            console.log(snap.val())
-            let players = snap.val()
-            let count = Object.keys(players).length
-            self.playerReady = count
+    // console.log('-----room',count)
+    // console.log(this.playerReady)
+    let self = this
+    roomRef.on('value', function (snap) {
+        console.log(snap.val())
+        let players = snap.val()
+        let count = Object.keys(players).length
+        self.playerReady = count
 
-            let isReadyNum = 0
-            for (const i in players) {
-                if (players[i].isReady) {
-                    isReadyNum++
-                }
+        let isReadyNum = 0
+        for (const i in players) {
+            if (players[i].isReady) {
+                isReadyNum++
             }
+        }
 
-            if (isReadyNum === 3) {
-                self.playOn = true
-                // setTimeout(function() {
-                //     this.playOn = false
-                //     alert('times up')
-                //     let counterHitam = 0
-                //     let counterPutih = 0
-                //     console.log('------all ready')
-                //     for (const i in players) {
-                //         if(players[i].option === '') {
-                //             let acak = Math.floor(Math.random() * 2)
-                //             if (acak === 0){
-                //                 // players[i].option = "hitam"
-                //                 roomRef.child(`/${key}`).update({
-                //                     option: "hitam"
-                //                 })
-                //             } else {
-                //                 // players[i].option = "putih"
-                //                 roomRef.child(`/${key}`).update({
-                //                     option: "putih"
-                //                 })
-                //             }
-                //         }
-                //         if(players[i].option === 'hitam'){
-                //             counterHitam++
-                //         } else {
-                //             counterPutih++
-                //         }
-                //     }
-                //     console.log('-----selesai random\n', counterHitam, counterPutih)
-                //     if(counterHitam == 1) {
-                //         for (const i in players) {
-                //             if (players[i].option === "hitam") {
-                //                 self.winner = players[i].name
-                //             }
-                //         }
-                //     } else if (counterPutih == 1) {
-                //         for (const i in players) {
-                //             if (players[i].option === "putih") {
-                //                 self.winner = players[i].name
-                //             }
-                //         }
-                //     }
+        if (isReadyNum === 3) {
+            self.playOn = true
+            // setTimeout(function() {
+            //     this.playOn = false
+            //     alert('times up')
+            //     let counterHitam = 0
+            //     let counterPutih = 0
+            //     console.log('------all ready')
+            //     for (const i in players) {
+            //         if(players[i].option === '') {
+            //             let acak = Math.floor(Math.random() * 2)
+            //             if (acak === 0){
+            //                 // players[i].option = "hitam"
+            //                 roomRef.child(`/${key}`).update({
+            //                     option: "hitam"
+            //                 })
+            //             } else {
+            //                 // players[i].option = "putih"
+            //                 roomRef.child(`/${key}`).update({
+            //                     option: "putih"
+            //                 })
+            //             }
+            //         }
+            //         if(players[i].option === 'hitam'){
+            //             counterHitam++
+            //         } else {
+            //             counterPutih++
+            //         }
+            //     }
+            //     console.log('-----selesai random\n', counterHitam, counterPutih)
+            //     if(counterHitam == 1) {
+            //         for (const i in players) {
+            //             if (players[i].option === "hitam") {
+            //                 self.winner = players[i].name
+            //             }
+            //         }
+            //     } else if (counterPutih == 1) {
+            //         for (const i in players) {
+            //             if (players[i].option === "putih") {
+            //                 self.winner = players[i].name
+            //             }
+            //         }
+            //     }
 
-                // }, 5000)
-            }
-        })
-    }
+            // }, 5000)
+      }
+    })
+  }
 }
 </script>
