@@ -1,12 +1,15 @@
 <template>
     <div>
-        <button @click="test">test</button>
-        <p>{{ firebaseRoom }}</p>
-        <button v-if="playerReady === 5" @click="startGame"> Start Game </button>
-        <div v-if="playOn">
+        <div class="container">
+            <button @click="test">test</button>
+            <p>{{ firebaseRoom }}</p>
+            <button v-if="playerReady === 5" @click="startGame"> Start Game </button>
+            <div v-if="playOn">
             <button @click="setOption('hitam')">hitam</button>
             <button @click="setOption('putih')">putih</button>
         </div>
+        </div>
+        
         
     </div>
         
