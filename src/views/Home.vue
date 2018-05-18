@@ -29,6 +29,12 @@
                 </div>
             </div>
         </form>
+        <div class="row mt-5">
+          <h3 class="col-12">Hall of Fame</h3>
+          <ul v-for="winner in winners" :key="winner" class="list-group col-5 mx-auto">
+            <li class="list-group-item">{{ winner }}</li>
+          </ul>
+        </div>
     </div>
   </div>
 </template>
@@ -48,6 +54,11 @@ export default {
   },
   firebase: {
     firebaseRoom: roomRef
+  },
+  computed: {
+    winners () {
+      return this.$store.state.winners
+    }
   },
   methods: {
     register: function () {
