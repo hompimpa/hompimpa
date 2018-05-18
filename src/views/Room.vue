@@ -3,12 +3,13 @@
         <div class="container">
             <button @click="test">test</button>
             <p>{{ firebaseRoom }}</p>
-            <button v-if="playerReady === 5" @click="startGame"> Start Game </button>
+            <button v-if="playerReady === 3" @click="readyGame"> Start Game </button>
             <div v-if="playOn">
-            <button @click="setOption('hitam')">hitam</button>
-            <button @click="setOption('putih')">putih</button>
+                <button @click="setOption('hitam')">hitam</button>
+                <button @click="setOption('putih')">putih</button>
+            </div>
         </div>
-        </div>
+        {{ winner }}
     </div>
         
 </template>
@@ -99,17 +100,26 @@ export default {
                         playerHitam.push(players[i].player)
                     } else if (players[i].option === "putih") {
                         playerPutih.push(players[i].player)
-                    } else {
-                        self.playOn = false
-                    }
+                    } 
                 }
                 console.log('----', playerHitam, playerPutih)
                 if (playerHitam.length === 1) {
                     self.winner = playerHitam[0]
                 } else if (playerPutih.length === 1) {
                     self.winner = playerPutih[0]
+                } else {
+                    self.playOn = false
+                    let key = localStorage.getItem('key')
+                    roomRef.child(`/${key}`).update({
+                        isReady: false
+                    })
                 }
             })
+        },
+        removePlayer () {
+            let key = localStorage.getItem('key')
+            roomRef.child(`/${key}`).remove()
+            this.$router.push('/')
         }
     },
     mounted () {

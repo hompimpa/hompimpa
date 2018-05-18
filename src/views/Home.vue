@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="container bg-light rounded shadow p-3 mb-5 bg-white rounded">
-        <form class="form-horizontal" role="form" method="POST" action="/login">
+        <form class="form-horizontal" role="form">
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
