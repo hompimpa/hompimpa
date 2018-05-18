@@ -1,9 +1,21 @@
 <template>
     <div>
         <div class="container">
-            <button @click="test">test</button>
+            <div class="row border">
+                <div class="col col-sm-6 col-md-4" v-for="(player, i) in firebaseRoom" :key="{i}">
+                    <p class="bg-white p-1">{{ player.player }}</p>
+                    <img src="../assets/fist.jpg" style="height: 100px; width: 100px" alt="fist" v-if="player.option === '' && done === false">
+                    <img src="../assets/hitam.jpg" style="height: 100px; width: 100px" alt="hitam" v-if="player.option === 'hitam' && done === true">
+                    <img src="../assets/putih.jpg" style="height: 100px; width: 100px" alt="puih" v-if="player.option === 'putih' && done === true">
+                    <p>{{ player.option }}</p>
+                </div>
+            </div>
+            
+            
             <p>{{ firebaseRoom }}</p>
             <button v-if="playerReady === 3" @click="readyGame"> Start Game </button>
+            <p v-if="playerReady < 3">Menunggu Player lain</p>
+            <p v-if="berlangsung"> HOM PIM PA ALAIUM GAMBRENG!! </p>
             <div v-if="playOn">
                 <button @click="setOption('hitam')">hitam</button>
                 <button @click="setOption('putih')">putih</button>
@@ -22,7 +34,9 @@ export default {
         return {
             playerReady: 0,
             playOn: false,
-            winner: ''
+            winner: '',
+            done: false,
+            berlangsung: false
         }
     },
     firebase: {
@@ -34,9 +48,12 @@ export default {
             console.log('----masuk watch')
             if (val) {
                 let self = this
+
+                self.berlangsung = true
                 setTimeout(function () {
                     
                     self.checkAllOpt()
+                    self.berlangsung = false
                 }, 5000)
             }
         }
@@ -105,10 +122,13 @@ export default {
                 console.log('----', playerHitam, playerPutih)
                 if (playerHitam.length === 1) {
                     self.winner = playerHitam[0]
+                    self.done = true
                 } else if (playerPutih.length === 1) {
                     self.winner = playerPutih[0]
+                    self.done = true
                 } else {
                     self.playOn = false
+                    self.done = true
                     let key = localStorage.getItem('key')
                     roomRef.child(`/${key}`).update({
                         isReady: false
