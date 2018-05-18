@@ -5,12 +5,12 @@
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <img src="../assets/hand.png"class="rounded-circle" style="height: 200px; width: 200px"></img>
+                    <img src="../assets/hand.png" class="rounded-circle" style="height: 200px; width: 200px">
                     <h1>hompimpa!</h1>
                     <hr>
                 </div>
             </div>
-            <div class="row" id="playerForm"i>
+            <div class="row" id="playerForm">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
                     <div class="form-group">
@@ -25,7 +25,7 @@
             <div class="row" style="padding-top: 1rem">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <button class="btn btn-success" @click="register"><i class="fa fa-sign-in"></i>Sign Up</button>
+                    <button class="btn btn-success" @click="register">Sign Up</button>
                 </div>
             </div>
         </form>
