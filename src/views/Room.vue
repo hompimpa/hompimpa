@@ -122,10 +122,12 @@ export default {
                 if (playerHitam.length === 1) {
                     self.winner = playerHitam[0]
                     swal('The Winner is...', self.winner)
+                    self.$store.commit('addWinnerList', playerHitam[0])
                     self.done = true
                 } else if (playerPutih.length === 1) {
                     self.winner = playerPutih[0]
                     swal('The Winner is...', self.winner)
+                    self.$store.commit('addWinnerList', playerPutih[0])
                     self.done = true
                 } else {
                     self.playOn = false
