@@ -1,8 +1,35 @@
 <template>
   <div class="home">
-    <input type="text" placeholder="input your name" v-model="name">
-    <button @click="register">daftar</button>
-    <p>{{this.firebaseRoom}}</p>
+    <div class="container bg-light rounded shadow p-3 mb-5 bg-white rounded">
+        <form class="form-horizontal" role="form" method="POST" action="/login">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <img src="../assets/hand.png" class="rounded-circle" style="height: 200px; width: 200px">
+                    <h1>hompimpa!</h1>
+                    <hr>
+                </div>
+            </div>
+            <div class="row" id="playerForm">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="yourName"><b>Your Name</b></label>
+                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                            <input type="text" name="yourName" class="form-control" id="yourName"
+                                   placeholder="input your name..." required autofocus v-model="name">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 1rem">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <button class="btn btn-success" @click="register">Sign Up</button>
+                </div>
+            </div>
+        </form>
+    </div>
   </div>
 </template>
 
@@ -54,3 +81,32 @@ export default {
   }
 }
 </script>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css?family=Electrolize|Passion+One|Questrial');
+
+body {
+  background-color: crimson;
+}
+
+input {
+  outline: none;
+  outline-style: none;
+  outline-color: initial;
+  outline-width: initial;
+  border: none;
+}
+
+h1 {
+  /* font-family: 'Questrial', sans-serif; */
+  font-family: 'Passion One', cursive;
+  color: black;
+}
+
+#playerForm,
+button {
+  font-family: 'Questrial', sans-serif;
+}
+
+</style>
