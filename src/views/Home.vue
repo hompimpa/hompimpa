@@ -66,8 +66,9 @@ export default {
         } else {
           roomRef.push({
             player: self.name,
-            option: ''
-          })
+            option: '',
+            isReady: false
+          }).then(response => console.log('---ini yang di push',response))
 
           self.$store.commit('addPlayerCount')
 
